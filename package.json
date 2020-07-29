@@ -1,0 +1,11 @@
+{
+  "name": "tiny-url",
+  "version": "1.0.0",
+  "description": "Shorten url service",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abdybaev Azamat",
+  "license": "MIT"
+}
