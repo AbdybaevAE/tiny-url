@@ -1,6 +1,7 @@
 export const hello = (): void => {
-  console.log('world');
+    console.log('world');
 };
 hello();
 
-let a = '1';
+const a = '1';
+console.log(a);
