@@ -8,6 +8,6 @@
     "watch": [
       "src"
     ],
-    "exec": "npm run eslint && ts-node src/main.ts",
+    "exec": "ts-node src/main.ts",
     "ext": "ts"
   }

@@ -25,9 +25,6 @@ export type TEnvConfig = {
     DOT_ENV_CONFIG: boolean;
 };
 
-export type TEnvMap = {
-    [key in keyof TEnvConfig]: number | string | boolean;
-};
 export const envKeys: {
     [key in keyof TEnvConfig]: string;
 } = {
@@ -75,7 +72,6 @@ export const envObject: TEnvConfig = {
     if (IsEmptyString(value)) throw environmentsError;
 });
 if (!InArray(EnvironmentList, envObject.NODE_ENV)) throw environmentsError;
-// [envObject.APP_HOST, envObject];
 // Validate environment values end
 
 export { envObject as env };

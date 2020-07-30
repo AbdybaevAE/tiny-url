@@ -1,12 +1,12 @@
 import * as path from 'path';
 import { Enivornment } from '../constants';
 
-import { TEnvMap, envObject } from '../env';
+import { TEnvConfig, envObject } from '../env';
 type TConfig = {
     isProduction: boolean;
     isDevelopment: boolean;
     isStaging: boolean;
-    env: TEnvMap;
+    env: TEnvConfig;
 };
 export const config: TConfig = {
     env: envObject,
