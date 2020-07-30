@@ -10,7 +10,6 @@ const format = (level: string, args: any[]): string => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const info = (...args: any[]): void => {
     console.log(format(Level.INFO, args));
-    // console.log(Level.INFO, args);
 };
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const error = (...args: any[]): void => {

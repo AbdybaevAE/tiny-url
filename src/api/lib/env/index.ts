@@ -8,9 +8,9 @@ import {
     IsNumber,
     IsEmptyString,
 } from '../util';
-import { root } from '../config';
 import { environmentsError } from '../errors';
-import { EnvironmentList } from '../constants';
+import { EnvironmentList, root } from '../constants';
+import log from '../logger';
 
 export type TEnvConfig = {
     NODE_ENV: string;
@@ -40,6 +40,7 @@ export const envKeys: {
     DOT_ENV_CONFIG: 'DOT_ENV_CONFIG',
 };
 const dotEnvValue = toBoolean(getEnv('DOT_ENV_CONFIG'));
+
 if (dotEnvValue) {
     dotenv.config({
         path: path.join(root, '.env'),
@@ -58,9 +59,8 @@ export const envObject: TEnvConfig = {
     APP_ROUTE_PREFIX: getEnv(envKeys.APP_ROUTE_PREFIX),
     DOT_ENV_CONFIG: dotEnvValue,
 };
-
+log.info('envs', envObject);
 // Validate environment values starts
-
 [envObject.APP_PORT, envObject.TYPEORM_PORT].forEach(value => {
     if (!IsNumber(value)) throw environmentsError;
 });

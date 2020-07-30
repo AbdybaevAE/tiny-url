@@ -1,4 +1,3 @@
-import * as path from 'path';
 import { Enivornment } from '../constants';
 
 import { TEnvConfig, envObject } from '../env';
@@ -14,5 +13,3 @@ export const config: TConfig = {
     isDevelopment: envObject.NODE_ENV === Enivornment.DEVELOPMENT,
     isStaging: envObject.NODE_ENV === Enivornment.STAGING,
 };
-
-export const root = path.normalize(path.join(__dirname, '../../'));
