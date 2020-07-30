@@ -29,7 +29,7 @@
   "lint-staged": {
     "./src/*.{js,jsx,ts,tsx}": [
       "npx prettier --write",
-      "eslint src/*ts --fix-dry-run"
+      "eslint src/*ts"
     ]
   }
 }
