@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const toNumber = (value: string): number => {
     return parseInt(value, 10);
 };
@@ -15,4 +17,12 @@ export const IsNumber = (value: number): boolean => {
 };
 export const IsEmptyString = (value: string): boolean => {
     return value == null || value == '';
+};
+
+export const GetDefaultExpireDateFromNow = (): Date => {
+    return moment().add(24, 'months').toDate();
+};
+
+export const GetEarliestExpireDateFromNow = (): Date => {
+    return moment().add(6, 'days').toDate();
 };

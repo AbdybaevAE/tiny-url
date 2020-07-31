@@ -10,7 +10,6 @@ import {
 } from '../util';
 import { environmentsError } from '../errors';
 import { EnvironmentList, root } from '../constants';
-import log from '../logger';
 
 export type TEnvConfig = {
     NODE_ENV: string;
@@ -59,7 +58,6 @@ export const envObject: TEnvConfig = {
     APP_ROUTE_PREFIX: getEnv(envKeys.APP_ROUTE_PREFIX),
     DOT_ENV_CONFIG: dotEnvValue,
 };
-log.info('envs', envObject);
 // Validate environment values starts
 [envObject.APP_PORT, envObject.TYPEORM_PORT].forEach(value => {
     if (!IsNumber(value)) throw environmentsError;

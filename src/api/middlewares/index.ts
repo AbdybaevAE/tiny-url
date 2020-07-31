@@ -1,5 +1,21 @@
-export { CompressionMiddleware } from './compression-middleware';
-export { LogMiddleware } from './log-middleware';
-export { SecurityHstsMiddleware } from './security-hsts-middleware';
-export { SecurityMiddleware } from './security-middleware';
-export { SecurityNoCacheMiddleware } from './security-no-cache-middleware';
+import { CompressionMiddleware } from './compression-middleware';
+import { LogMiddleware } from './log-middleware';
+import { SecurityHstsMiddleware } from './security-hsts-middleware';
+import { SecurityMiddleware } from './security-middleware';
+import { SecurityNoCacheMiddleware } from './security-no-cache-middleware';
+
+export const AllMiddlewares = [
+    CompressionMiddleware,
+    LogMiddleware,
+    SecurityHstsMiddleware,
+    SecurityMiddleware,
+    SecurityNoCacheMiddleware,
+];
+
+export {
+    CompressionMiddleware,
+    LogMiddleware,
+    SecurityHstsMiddleware,
+    SecurityMiddleware,
+    SecurityNoCacheMiddleware,
+};

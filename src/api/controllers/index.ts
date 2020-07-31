@@ -1,3 +1,6 @@
-import { SampleController } from './sample-controller';
+import { SampleController } from './sample';
+import { UrlController } from './url';
 
-export { SampleController } from './sample-controller';
+export const AllControllers = [SampleController, UrlController];
+
+export { SampleController, UrlController };

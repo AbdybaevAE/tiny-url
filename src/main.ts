@@ -13,12 +13,12 @@ import { expressLoader } from './api/loaders/express-loader';
 // import { typeormLoader } from './loaders/typeormLoader';
 // import { winstonLoader } from './loaders/winstonLoader';
 
-log.info();
 (async () => {
     try {
         await bootstrapMicroframework({
             loaders: [expressLoader],
         });
+        log.info('Application susscessfully started...');
     } catch (e) {
         log.error('Application crashed', e);
     }

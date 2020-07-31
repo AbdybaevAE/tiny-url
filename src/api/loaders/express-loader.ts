@@ -8,14 +8,8 @@ import { config } from '../lib/config';
 // import { authorizationChecker } from '../auth/authorizationChecker';
 // import { currentUserChecker } from '../auth/currentUserChecker';
 // import { env } from '../env';
-import { SampleController } from '../controllers';
-import {
-    CompressionMiddleware,
-    LogMiddleware,
-    SecurityHstsMiddleware,
-    SecurityMiddleware,
-    SecurityNoCacheMiddleware,
-} from '../middlewares';
+import { AllControllers } from '../controllers';
+import { AllMiddlewares } from '../middlewares';
 export const expressLoader: MicroframeworkLoader = (
     settings: MicroframeworkSettings | undefined,
 ) => {
@@ -26,14 +20,8 @@ export const expressLoader: MicroframeworkLoader = (
         routePrefix: config.env.APP_ROUTE_PREFIX,
         defaultErrorHandler: false,
 
-        controllers: [SampleController],
-        middlewares: [
-            CompressionMiddleware,
-            LogMiddleware,
-            SecurityHstsMiddleware,
-            SecurityMiddleware,
-            SecurityNoCacheMiddleware,
-        ],
+        controllers: AllControllers,
+        middlewares: AllMiddlewares,
         interceptors: [],
     });
     const server = expressApp.listen(config.env.APP_PORT);

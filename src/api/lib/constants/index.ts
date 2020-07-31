@@ -10,3 +10,6 @@ export const InEnvList = (value: string): boolean => {
     return InArray(EnvironmentList, value);
 };
 export const root = path.normalize(path.join(__dirname, '../../../../'));
+export const apiDir = path.join(root, 'api');
+
+export const DEFAULT_EXPIRE_DATE_IN_MONTHS = 24;
