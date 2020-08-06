@@ -12,6 +12,7 @@ import {
     Index,
 } from 'typeorm';
 
+
 @Entity()
 export class Url {
     @PrimaryGeneratedColumn()

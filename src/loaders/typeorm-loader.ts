@@ -7,13 +7,10 @@ import { config } from '../lib/config';
 import { root } from '../lib/constants';
 import * as path from 'path';
 const { env } = config;
-
 export const typeormLoader: MicroframeworkLoader = async (
     settings: MicroframeworkSettings | undefined,
 ) => {
-    const loadedConnectionOptions = await getConnectionOptions();
-
-    const connectionOptions = Object.assign(loadedConnectionOptions, {
+    const connection = await createConnection({
         type: 'postgres',
         host: env.TYPEORM_HOST,
         port: env.TYPEORM_PORT,
@@ -21,11 +18,9 @@ export const typeormLoader: MicroframeworkLoader = async (
         password: env.TYPEORM_PASSWORD,
         database: env.TYPEORM_DATABASE,
         synchronize: false,
-        entities: path.join(root, 'entities'),
-        migrations: path.join(root, 'migrations'),
+        entities: [path.join(root, 'entities/*.ts')],
+        migrations: [path.join(root, 'migrations/*.ts')],
     });
-
-    const connection = await createConnection(connectionOptions);
 
     if (settings) {
         settings.setData('connection', connection);

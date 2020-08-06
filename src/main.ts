@@ -4,6 +4,7 @@ import { Container } from 'typedi';
 import { useContainer as routingUseContainer } from 'routing-controllers';
 import { useContainer as ormUseContainer } from 'typeorm';
 import { expressLoader } from './loaders/express-loader';
+import { typeormLoader } from './loaders/typeorm-loader';
 import log from './lib/logger';
 
 async function init() {
@@ -11,7 +12,7 @@ async function init() {
         routingUseContainer(Container);
         ormUseContainer(Container);
         await bootstrapMicroframework({
-            loaders: [expressLoader],
+            loaders: [typeormLoader, expressLoader],
         });
         log.info('Application susscessfully started...');
     } catch (e) {

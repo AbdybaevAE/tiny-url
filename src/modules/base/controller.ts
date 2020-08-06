@@ -1,4 +1,5 @@
 import { THttpError } from '../../lib/errors';
+import { JoiObject, ObjectSchema, ValidationResult } from 'joi';
 export type TSuccessResponse<T> = {
     isSuccess: boolean;
     data: T;
@@ -20,5 +21,11 @@ export class BaseController {
             isSuccess: false,
             error,
         };
+    }
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    public validate<T>(schema: ObjectSchema, value: T): ValidationResult<T> {
+        return schema.validate(value, {
+            stripUnknown: true,
+        });
     }
 }

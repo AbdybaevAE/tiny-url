@@ -1,11 +1,12 @@
 import Joi from 'joi';
 import { GetEarliestExpireDateFromNow } from '../../lib/util';
+import { Url } from '../../entities/url';
 
-export interface createTinyUrlDto {
+export type createLinkDto = {
     url: string;
     expiredAt?: Date;
-}
-export const createTinyUrlSchema = Joi.object({
+};
+export const createLinkSchema = Joi.object({
     url: Joi.string()
         .required()
         .uri({
@@ -13,3 +14,11 @@ export const createTinyUrlSchema = Joi.object({
         }),
     expireAt: Joi.date().optional().min(GetEarliestExpireDateFromNow()),
 });
+
+export type linkRo = {
+    id: number;
+    longUrl: string;
+    shortUrl: string;
+    createdAt: Date;
+    expiredAt: Date;
+};

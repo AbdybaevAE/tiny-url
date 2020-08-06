@@ -5,17 +5,13 @@ import {
     Body,
     Controller,
 } from 'routing-controllers';
-import {
-    BaseController,
-    TResponse,
-    TSuccessResponse,
-    TFailureResponse,
-} from '../base/controller';
+import { BaseController, TResponse } from '../base/controller';
 // import { TYPES } from '../../types';
-import { createTinyUrlDto, createTinyUrlSchema } from './util';
+import { createLinkDto, createLinkSchema, linkRo } from './util';
 import { HttpInvalidBody, THttpError } from '../../lib/errors';
 import { UrlModule } from '.';
 import { Service } from 'typedi';
+import { Url } from '../../entities/url';
 
 @Service()
 @JsonController()
@@ -27,17 +23,27 @@ export class UrlController extends BaseController {
 
     @Post('/')
     async createTinyUrl(
-        @Body() data: createTinyUrlDto,
+        @Body() body: createLinkDto,
     ): Promise<TResponse<string>> {
-        console.log('data is ', data);
-        const { value, error } = createTinyUrlSchema.validate(data);
-        console.log(error);
+        const { value, error } = this.validate(createLinkSchema, body);
         if (error) return this.error(HttpInvalidBody);
         try {
-            const shortLink = await this.urlModule.createTinyUrl(value);
+            const shortLink = await this.urlModule.create(value);
             return this.success(shortLink);
         } catch (e) {
-            return this.error(e);
+            return e;
+        }
+    }
+    @Get('/')
+    async list(): Promise<TResponse<Url[]>> {
+        // const { value, error } = this.validate(createTinyUrlSchema, body);
+        // if (error) return this.error(HttpInvalidBody);
+        try {
+            const list = await this.urlModule.list();
+            return this.success(list);
+        } catch (e) {
+            console.log(e);
+            return e;
         }
     }
 }
