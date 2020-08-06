@@ -12,3 +12,6 @@ export const InEnvList = (value: string): boolean => {
 export const root = path.normalize(path.join(__dirname, '../../../'));
 
 export const DEFAULT_EXPIRE_DATE_IN_MONTHS = 24;
+export enum IsolationLevel {
+    SERIALIZABLE = 'SERIALIZABLE',
+}
