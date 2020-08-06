@@ -58,6 +58,7 @@ export const envObject: TEnvConfig = {
     APP_ROUTE_PREFIX: getEnv(envKeys.APP_ROUTE_PREFIX),
     DOT_ENV_CONFIG: dotEnvValue,
 };
+
 // Validate environment values starts
 [envObject.APP_PORT, envObject.TYPEORM_PORT].forEach(value => {
     if (!IsNumber(value)) throw environmentsError;

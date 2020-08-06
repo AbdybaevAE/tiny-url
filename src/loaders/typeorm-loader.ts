@@ -4,7 +4,7 @@ import {
 } from 'microframework-w3tec';
 import { createConnection, getConnectionOptions } from 'typeorm';
 import { config } from '../lib/config';
-import { apiDir } from '../lib/constants';
+import { root } from '../lib/constants';
 import * as path from 'path';
 const { env } = config;
 
@@ -21,8 +21,8 @@ export const typeormLoader: MicroframeworkLoader = async (
         password: env.TYPEORM_PASSWORD,
         database: env.TYPEORM_DATABASE,
         synchronize: false,
-        entities: path.join(apiDir, 'entities'),
-        migrations: path.join(apiDir, 'migrations'),
+        entities: path.join(root, 'entities'),
+        migrations: path.join(root, 'migrations'),
     });
 
     const connection = await createConnection(connectionOptions);

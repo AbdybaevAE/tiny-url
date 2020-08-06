@@ -1,14 +1,11 @@
-type TError = {
-    statusCode: number;
-    message: string;
-};
-type TSuccessResponse<T> = {
+import { THttpError } from '../../lib/errors';
+export type TSuccessResponse<T> = {
     isSuccess: boolean;
     data: T;
 };
-type TFailureResponse = {
+export type TFailureResponse = {
     isSuccess: boolean;
-    error: TError;
+    error: THttpError;
 };
 export type TResponse<T> = TSuccessResponse<T> | TFailureResponse;
 export class BaseController {
@@ -18,11 +15,10 @@ export class BaseController {
             data,
         };
     }
-    public error(error: TError): TFailureResponse {
+    public error(error: THttpError): TFailureResponse {
         return {
             isSuccess: false,
             error,
         };
     }
-    // public validate()
 }
